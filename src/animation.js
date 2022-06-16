@@ -76,16 +76,16 @@ window.addEventListener('keydown', (e) => {
 
     switch (e.code) {
         case 'KeyD':
-            player2.velocity.x = 0
+            player2.velocity.x = -movementSpeed
             break;
         case 'KeyA':
-            player2.velocity.x = 0
+            player2.velocity.x = movementSpeed
             break;
         case 'KeyW':
-            player2.velocity.y = 0
+            player2.velocity.y = movementSpeed
             break;
         case 'KeyS':
-            player2.velocity.y = 0
+            player2.velocity.y = -movementSpeed
             break;
 
         default:
