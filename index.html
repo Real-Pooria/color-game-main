@@ -44,6 +44,7 @@
             padding: 30px 60px;
             border-radius: 20px;
             cursor: pointer;
+            user-select: none;
         }
 
         #menu .menu-restart {
@@ -63,6 +64,7 @@
             border-radius: 12px;
             margin: auto;
             cursor: pointer;
+            user-select: none;
         }
 
         #menu .menu-restart .winner {
@@ -119,6 +121,7 @@
             justify-content: center;
             align-items: center;
             font-size: 32px;
+            user-select: none;
         }
 
         .controls .bot-side {
@@ -140,6 +143,18 @@
         .player.player2 {
             margin-top: 80px;
         }
+
+        .restart-btn {
+            font-size: 24px;
+            font-weight: 700;
+            width: fit-content;
+            background-color: cornflowerblue;
+            padding: 12px 24px;
+            border-radius: 12px;
+            margin: 24px auto auto auto;
+            cursor: pointer;
+            user-select: none;
+        }
     </style>
 
     <div id="app">
@@ -149,7 +164,7 @@
             <div class="menu-start">Start</div>
 
             <div class="menu-restart">
-                <p class="winner">player2 won the GAME!</p>
+                <p class="winner"></p>
 
                 <p class="btn">Restart</p>
             </div>
@@ -159,6 +174,10 @@
             <div class="win-condition">
                 <p>Who gets this color FIRST?</p>
                 <div class="box"></div>
+            </div>
+
+            <div class="restart-btn">
+                Restart
             </div>
         </div>
 

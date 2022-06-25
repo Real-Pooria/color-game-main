@@ -10,6 +10,10 @@ const restartEl = document.querySelector('.menu-restart .btn')
 restartEl.addEventListener('click', function() {
     this.closest('.menu-restart').style.display = 'none'
     window.location.href = ''
-    animate()
+})
+
+const restartBtn = document.querySelector('.restart-btn')
+restartBtn.addEventListener('click', function() {
+    window.location.href = ''
 })
 
