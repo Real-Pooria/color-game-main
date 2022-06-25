@@ -17,5 +17,5 @@ function mixColors(a, b) {
 }
 
 export {
-    mixColors
+    mixColors,
 }

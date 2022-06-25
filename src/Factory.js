@@ -1,5 +1,6 @@
 import Obstacle from './Obstacle.js'
 import { canvas } from './canvas.js'
+import { colors } from './colors.js'
 
 export default class Factory {
     constructor() {
@@ -35,23 +36,6 @@ export default class Factory {
 
     colorGate(count) {
         const result = []
-        const colors = [
-            '#0000FF',
-            '#00FF00',
-            '#00FFFF',
-            '#C0C0C0',
-            '#808080',
-            '#FFFFFF',
-            '#800000',
-            '#FF0000',
-            '#800080',
-            '#FF00FF',
-            '#008000',
-            '#808000',
-            '#FFFF00',
-            '#000080',
-            '#008080',
-        ]
     
         for (let index = 0; index < count; index++) {
             result.push(this.fakeColorGate(colors[index % colors.length]))

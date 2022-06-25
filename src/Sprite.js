@@ -2,15 +2,18 @@ import Rectangle from './Rectangle.js'
 import { canvas } from './canvas.js'
 import { obstacles, colorGates } from './animation.js'
 import { mixColors } from './helper.js'
+import { targetColor } from './animation.js'
+import { playerOneControls, playerTwoControls } from './animation.js'
 
 export default class Sprite extends Rectangle {
-    constructor(size, position, color) {
+    constructor(size, position, color, name) {
         super(size, position, color)
 
         this.velocity = {
             x: 0,
             y: 0,
         }
+        this.name = name
     }
     
     update() {
@@ -32,7 +35,18 @@ export default class Sprite extends Rectangle {
     changeColorToGateColor(colorGate) {
         if (this.isColliding(colorGate, true)) {
             this.color = colorGate.color
+
+            if (this.color === targetColor) {
+                this.gameOver()
+            }
         }
+    }
+
+    gameOver() {
+        window.removeEventListener('keydown', playerOneControls)
+        window.removeEventListener('keydown', playerTwoControls)
+        document.querySelector('.menu-restart').style.display = 'block'
+        document.querySelector('.winner').innerHTML = `${this.name} won the GAME!`
     }
 
     mixColorToGateColor(colorGate) {

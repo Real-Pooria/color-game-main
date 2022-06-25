@@ -19,6 +19,7 @@
         html,
         body {
             height: 100%;
+            background-color: #f5eee8;
         }
 
         #app {
@@ -27,10 +28,171 @@
             justify-content: center;
             align-items: center;
         }
+
+        #menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #menu .menu-start {
+            font-size: 40px;
+            font-weight: 700;
+            background-color: cornflowerblue;
+            color: rgb(11, 65, 27);
+            padding: 30px 60px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        #menu .menu-restart {
+            width: 800px;
+            height: 800px;
+            background-color: rgba(0, 0, 0, .7);
+            text-align: center;
+            display: none;
+        }
+
+        #menu .menu-restart .btn {
+            font-size: 40px;
+            font-weight: 700;
+            width: fit-content;
+            background-color: cornflowerblue;
+            padding: 12px 24px;
+            border-radius: 12px;
+            margin: auto;
+            cursor: pointer;
+        }
+
+        #menu .menu-restart .winner {
+            font-size: 40px;
+            color: rgb(51, 197, 51);
+            padding-top: 25%;
+            margin-bottom: 16px;
+            z-index: 1;
+        }
+
+        .left-sidebar {
+            position: absolute;
+            left: 16px;
+            top: 32px;
+        }
+
+        .left-sidebar .win-condition .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 200px;
+            border-radius: 16px;
+        }
+
+        .left-sidebar .win-condition p {
+            color: black;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        
+        .right-sidebar {
+            position: absolute;
+            right: 16px;
+            top: 32px;
+        }
+
+        .player {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .player p {
+            font-size: 32px;
+            font-weight: 700;
+            margin-right: 12px;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+        }
+
+        .controls .bot-side {
+            display: flex;
+        }
+
+        .controls .letter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            width: 36px;
+            height: 36px;
+            margin: 4px;
+            font-size: 20px;
+            border-radius: 4px;
+        }
+
+        .player.player2 {
+            margin-top: 80px;
+        }
     </style>
 
     <div id="app">
         <canvas></canvas>
+
+        <div id="menu">
+            <div class="menu-start">Start</div>
+
+            <div class="menu-restart">
+                <p class="winner">player2 won the GAME!</p>
+
+                <p class="btn">Restart</p>
+            </div>
+        </div>
+        
+        <div class="left-sidebar">
+            <div class="win-condition">
+                <p>Who gets this color FIRST?</p>
+                <div class="box"></div>
+            </div>
+        </div>
+
+        <div class="right-sidebar">
+            <div class="player player1">
+                <p>player1:</p>
+
+                <div class="controls">
+                    <div>🔝</div>
+
+                    <div class="bot-side">
+                        <div>⬅️</div>
+                        <div>⬇️</div>
+                        <div>➡️</div>
+                    </div>
+                </div>
+            </div>
+            <span style="font-size: 16px;">(BOTTOM-RIGHT)</span>
+
+            <div class="player player2">
+                <p>player2:</p>
+
+                <div class="controls">
+                    <div class="letter">W</div>
+
+                    <div class="bot-side">
+                        <div class="letter">A</div>
+                        <div class="letter">S</div>
+                        <div class="letter">D</div>
+                    </div>
+                </div>
+            </div>
+            <span style="font-size: 16px;">(TOP-LEFT)</span>
+        </div>
     </div>
 
     <script type="module" src="./src/index.js"></script>

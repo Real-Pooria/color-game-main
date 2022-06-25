@@ -1,10 +1,13 @@
 import Factory from './Factory.js'
 import Sprite from './Sprite.js'
 import { canvas, c } from './canvas.js'
+import { colors } from './colors.js'
 
 const factory = new Factory()
 const obstacles = factory.obstacle(200)
 const colorGates = factory.colorGate(60)
+const targetColor = colors[factory.randomBetween(0, colors.length - 1)]
+document.querySelector('.win-condition .box').style.backgroundColor = targetColor
 const movementSpeed = 5
 
 const player = new Sprite(
@@ -13,10 +16,11 @@ const player = new Sprite(
         height: 20,
     },
     {
-        x: 0,
-        y: 0
+        x: canvas.width - 20,
+        y: canvas.height - 20
     },
-    '#FF0000'
+    '#FFFFFF',
+    'player1'
 )
 
 const player2 = new Sprite(
@@ -25,10 +29,11 @@ const player2 = new Sprite(
         height: 20,
     },
     {
-        x: canvas.width - 20,
-        y: canvas.height - 20
+        x: 0,
+        y: 0
     },
-    '#0000FF'
+    '#FFFFFF',
+    'player2'
 )
 
 function animate() {
@@ -45,7 +50,10 @@ function animate() {
     })
 }
 
-window.addEventListener('keydown', (e) => {
+window.addEventListener('keydown', playerOneControls)
+window.addEventListener('keydown', playerTwoControls)
+
+function playerOneControls(e) {
     if (player.velocity.x !== 0 || player.velocity.y !== 0) {
         return;
     }
@@ -67,9 +75,9 @@ window.addEventListener('keydown', (e) => {
         default:
             break;
     }
-})
+}
 
-window.addEventListener('keydown', (e) => {
+function playerTwoControls(e) {
     if (player2.velocity.x !== 0 || player2.velocity.y !== 0) {
         return;
     }
@@ -91,10 +99,13 @@ window.addEventListener('keydown', (e) => {
         default:
             break;
     }
-})
+}
 
 export {
     animate,
+    playerOneControls,
+    playerTwoControls,
     obstacles,
-    colorGates
+    colorGates,
+    targetColor
 }
